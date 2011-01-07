@@ -2,21 +2,22 @@ NAME
     SVN::Simple::Hook - Simple Moose-based framework for Subversion hooks
 
 VERSION
-    version 0.110070
+    version 0.110071
 
 SYNOPSIS
-        package MyHook;
-    
-        use Moose;
-        extends 'MooseX::App::Cmd::Command';
-        with 'SVN::Simple::Hook';
-    
-        1;
-
 DESCRIPTION
+    This is a collection of Moose::Roles that help you implement Subversion
+    repository hooks by providing simple attribute access to relevant parts
+    of the Subversion API. This is a work in progress and the interface is
+    extremely unstable at the moment. You have been warned!
+
 ATTRIBUTES
   repos_path
     Directory containing the Subversion repository.
+
+SEE ALSO
+    See SVN::Simple::Hook::PreCommit for an example. This role exists solely
+    to be composed into other roles.
 
 AUTHOR
     Mark Gardner <mjgardner@cpan.org>

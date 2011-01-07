@@ -13,7 +13,7 @@ use Modern::Perl;    ## no critic (UselessNoCritic RequireExplicitPackage)
 package SVN::Simple::Hook::PreCommit;
 
 BEGIN {
-    $SVN::Simple::Hook::PreCommit::VERSION = '0.110070';
+    $SVN::Simple::Hook::PreCommit::VERSION = '0.110071';
 }
 
 # ABSTRACT: Role for Subversion pre-commit hooks
@@ -53,12 +53,15 @@ SVN::Simple::Hook::PreCommit - Role for Subversion pre-commit hooks
 
 =head1 VERSION
 
-version 0.110070
+version 0.110071
 
 =head1 SYNOPSIS
 
-    package MyHook;
-    
+    package MyHook::Cmd;
+    use Moose;
+    extends 'MooseX::App::Cmd';
+
+    package MyHook::Cmd::Command::pre_commit;
     use Moose;
     extends 'MooseX::App::Cmd::Command';
     with 'SVN::Simple::Hook::PreCommit';
@@ -82,6 +85,20 @@ version 0.110070
 =head2 txn_name
 
 Full name of the transaction to check in the repository.
+
+=for test_synopsis 1;
+
+=for test_synopsis __END__
+
+In your repository's F<hooks/pre-commit> file:
+
+    #!/bin/sh
+
+    REPOS="$1"
+    TXN="$2"
+
+    perl -MMyHook::Cmd -e 'MyHook::Cmd->run()' pre_commit -r "$REPOS" -t "$TXN" || exit 1
+    exit 0
 
 =head1 AUTHOR
 

@@ -45,7 +45,7 @@ my %WriteMakefileArgs = (
     'SVN::Repos' => '0',
     'namespace::autoclean' => '0'
   },
-  'VERSION' => '0.110070',
+  'VERSION' => '0.110071',
   'test' => {
     'TESTS' => 't/*.t'
   }

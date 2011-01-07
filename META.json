@@ -20,6 +20,9 @@
          }
       },
       "runtime" : {
+         "recommends" : {
+            "Alien::SVN" : 0
+         },
          "requires" : {
             "English" : 0,
             "Modern::Perl" : 0,
@@ -35,6 +38,9 @@
          }
       },
       "test" : {
+         "recommends" : {
+            "Alien::SVN" : 0
+         },
          "requires" : {
             "App::Cmd::Tester" : 0,
             "Carp" : 0,
@@ -48,10 +54,20 @@
             "Test::More" : "0.94",
             "Test::Most" : 0,
             "perl" : "5.004"
+         },
+         "suggests" : {
+            "Readonly::XS" : 0
          }
       }
    },
    "release_status" : "stable",
-   "version" : "0.110070"
+   "resources" : {
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/mjg/svn-simple-hook.git",
+         "web" : "http://github.com/mjg/svn-simple-hook"
+      }
+   },
+   "version" : "0.110071"
 }
 

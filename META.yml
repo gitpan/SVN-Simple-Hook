@@ -24,6 +24,8 @@ meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
 name: SVN-Simple-Hook
+recommends:
+  Alien::SVN: 0
 requires:
   English: 0
   Modern::Perl: 0
@@ -36,4 +38,6 @@ requires:
   SVN::Fs: 0
   SVN::Repos: 0
   namespace::autoclean: 0
-version: 0.110070
+resources:
+  repository: git://github.com/mjg/svn-simple-hook.git
+version: 0.110071
