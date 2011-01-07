@@ -1,0 +1,29 @@
+NAME
+    SVN::Simple::Hook - Simple Moose-based framework for Subversion hooks
+
+VERSION
+    version 0.110070
+
+SYNOPSIS
+        package MyHook;
+    
+        use Moose;
+        extends 'MooseX::App::Cmd::Command';
+        with 'SVN::Simple::Hook';
+    
+        1;
+
+DESCRIPTION
+ATTRIBUTES
+  repos_path
+    Directory containing the Subversion repository.
+
+AUTHOR
+    Mark Gardner <mjgardner@cpan.org>
+
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2011 by GSI Commerce.
+
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
+
