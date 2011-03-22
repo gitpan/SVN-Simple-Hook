@@ -20,7 +20,7 @@ BEGIN {
 
 use Test::More;
 
-eval "use Test::Portability::Files";
-plan skip_all => "Test::Portability::Files required for testing portability"
+eval "use Test::DistManifest";
+plan skip_all => "Test::DistManifest required for testing the manifest"
     if $@;
-run_tests();
+manifest_ok();

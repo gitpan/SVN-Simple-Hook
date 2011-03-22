@@ -20,7 +20,7 @@ BEGIN {
 
 use Test::More;
 
-eval "use Test::Portability::Files";
-plan skip_all => "Test::Portability::Files required for testing portability"
+eval "use Test::Vars";
+plan skip_all => "Test::Vars required for testing unused vars"
     if $@;
-run_tests();
+all_vars_ok();

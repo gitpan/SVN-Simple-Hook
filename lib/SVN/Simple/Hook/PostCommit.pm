@@ -9,44 +9,51 @@
 use utf8;
 use Modern::Perl;    ## no critic (UselessNoCritic,RequireExplicitPackage)
 
-package SVN::Simple::Hook::PreCommit;
+package SVN::Simple::Hook::PostCommit;
 
 BEGIN {
-    $SVN::Simple::Hook::PreCommit::VERSION = '0.200';
+    $SVN::Simple::Hook::PostCommit::VERSION = '0.200';
 }
 
-# ABSTRACT: Role for Subversion pre-commit hooks
+# ABSTRACT: Role for Subversion post-commit hooks
 
 use strict;
 use English '-no_match_vars';
 use Moose::Role;
 use MooseX::Has::Sugar;
-use MooseX::Types::Moose 'Str';
+use MooseX::Types::Common::Numeric 'PositiveInt';
 use SVN::Core;
 use SVN::Repos;
 use SVN::Fs;
 use namespace::autoclean;
 with 'SVN::Simple::Hook';
 
-has txn_name => (
+has rev => (
     ro,
     traits        => ['Getopt'],
-    isa           => Str,
-    cmd_aliases   => [qw(t txn tran trans transaction transaction_name)],
+    isa           => PositiveInt,
+    cmd_aliases   => [qw(revnum rev_num revision_number)],
     documentation => 'commit transaction name',
 );
 
-has transaction => (
-    ro, required, lazy,
-    isa      => '_p_svn_fs_txn_t',
-    init_arg => undef,
-    default => sub { $ARG[0]->repository->fs->open_txn( $ARG[0]->txn_name ) },
+has _svn_filesystem => (
+    ro, lazy,
+    isa     => '_p_svn_fs_t',
+    default => sub { shift->repository->fs },
 );
 
 {
     ## no critic (Subroutines::ProhibitUnusedPrivateSubroutines)
-    sub _build_author { return shift->transaction->prop('svn:author') }
-    sub _build_root   { return shift->transaction->root() }
+    sub _build_author {
+        my $self = shift;
+        return $self->_svn_filesystem->revision_prop( $self->rev,
+            'svn:author' );
+    }
+
+    sub _build_root {
+        my $self = shift;
+        return $self->_svn_filesystem->revision_root( $self->rev );
+    }
 }
 
 1;
@@ -59,7 +66,7 @@ has transaction => (
 
 =head1 NAME
 
-SVN::Simple::Hook::PreCommit - Role for Subversion pre-commit hooks
+SVN::Simple::Hook::PostCommit - Role for Subversion post-commit hooks
 
 =head1 VERSION
 
@@ -71,14 +78,13 @@ version 0.200
     use Moose;
     extends 'MooseX::App::Cmd';
 
-    package MyHook::Cmd::Command::pre_commit;
+    package MyHook::Cmd::Command::post_commit;
     use Moose;
     extends 'MooseX::App::Cmd::Command';
-    with 'SVN::Simple::Hook::PreCommit';
+    with 'SVN::Simple::Hook::PostCommit';
 
     sub execute {
         my ( $self, $opt, $args ) = @_;
-        my $txn = $self->txn();
 
         warn $self->author, ' changed ',
             scalar keys %{ $self->root->paths_changed() }, " paths\n";
@@ -88,22 +94,17 @@ version 0.200
 
 =head1 DESCRIPTION
 
-This L<Moose::Role|Moose::Role> gives you access to the current Subversion
-transaction for use in a pre-commit hook.  It's designed for use with
+This L<Moose::Role|Moose::Role> gives you access to the Subversion revision
+just committed for use in a post-commit hook.  It's designed for use with
 L<MooseX::App::Cmd::Command|MooseX::App::Cmd::Command> classes, so consult
 the main L<MooseX::App::Cmd documentation|MooseX::App::Command> for details
 on how to extend it to create your scripts.
 
 =head1 ATTRIBUTES
 
-=head2 txn_name
+=head2 revision_number
 
-Full name of the transaction to check in the repository.
-
-=head2 transaction
-
-The current L<Subversion transaction|SVN::Fs/_p_svn_fs_txn_t>, automatically
-populated at object creation time when the L<txn_name|/txn_name> is set.
+Revision number created by the commit.
 
 =head2 author
 
@@ -115,14 +116,14 @@ L<SVN::Simple::Hook|SVN::Simple::Hook> consumers.
 The L<Subversion root|SVN::Fs/_p_svn_fs_root_t> node as required by all
 L<SVN::Simple::Hook|SVN::Simple::Hook> consumers.
 
-=head1 Example F<hooks/pre-commit> hook script
+=head1 Example F<hooks/post-commit> hook script
 
     #!/bin/sh
 
     REPOS="$1"
-    TXN="$2"
+    REV="$2"
 
-    perl -MMyHook::Cmd -e 'MyHook::Cmd->run()' pre_commit -r "$REPOS" -t "$TXN" || exit 1
+    perl -MMyHook::Cmd -e 'MyHook::Cmd->run()' post_commit -r "$REPOS" --rev "$REV" || exit 1
     exit 0
 
 =head1 BUGS

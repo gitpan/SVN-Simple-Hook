@@ -7,9 +7,8 @@
 # This is free software; you can redistribute it and/or modify it under
 # the same terms as the Perl 5 programming language system itself.
 #
-use strict;          ## no critic (UselessNoCritic RequireExplicitPackage)
-use warnings;        ## no critic (UselessNoCritic RequireExplicitPackage)
-use Modern::Perl;    ## no critic (UselessNoCritic RequireExplicitPackage)
+use utf8;
+use Modern::Perl;    ## no critic (UselessNoCritic,RequireExplicitPackage)
 use warnings;
 use strict;
 use Test::More 0.94;
@@ -476,6 +475,7 @@ BEGIN {
         Test::Pod::Coverage
         Test::Portability::Files
         Test::YAML::Meta
+        open
     );
 
     my $Test = Test::Builder->new;

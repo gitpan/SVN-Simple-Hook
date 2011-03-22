@@ -4,7 +4,7 @@
       "Mark Gardner <mjgardner@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.200000, CPAN::Meta::Converter version 2.102400",
+   "generated_by" : "Dist::Zilla version 4.200004, CPAN::Meta::Converter version 2.110580",
    "license" : [
       "perl_5"
    ],
@@ -29,12 +29,15 @@
             "Moose::Role" : 0,
             "MooseX::Getopt" : 0,
             "MooseX::Has::Sugar" : 0,
+            "MooseX::Types::Common::Numeric" : 0,
             "MooseX::Types::Moose" : 0,
             "MooseX::Types::Path::Class" : 0,
             "SVN::Core" : 0,
             "SVN::Fs" : 0,
             "SVN::Repos" : 0,
-            "namespace::autoclean" : 0
+            "namespace::autoclean" : 0,
+            "perl" : "5.010",
+            "utf8" : 0
          }
       },
       "test" : {
@@ -62,12 +65,10 @@
    },
    "release_status" : "stable",
    "resources" : {
-      "repository" : {
-         "type" : "git",
-         "url" : "git://github.com/mjg/svn-simple-hook.git",
-         "web" : "http://github.com/mjg/svn-simple-hook"
+      "bugtracker" : {
+         "web" : "http://github.com/mjgardner/SVN-Simple-Hook/issues"
       }
    },
-   "version" : "0.110071"
+   "version" : "0.200"
 }
 

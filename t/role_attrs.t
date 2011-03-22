@@ -7,20 +7,19 @@
 # This is free software; you can redistribute it and/or modify it under
 # the same terms as the Perl 5 programming language system itself.
 #
-use strict;          ## no critic (UselessNoCritic RequireExplicitPackage)
-use warnings;        ## no critic (UselessNoCritic RequireExplicitPackage)
-use Modern::Perl;    ## no critic (UselessNoCritic RequireExplicitPackage)
+use utf8;
+use Modern::Perl;    ## no critic (UselessNoCritic,RequireExplicitPackage)
 
 use English '-no_match_vars';
 use Test::Most;
 use Readonly;
 
 Readonly my %ATTR => read_attr_hash(<<'END_DATA');
-    SVN::Simple::Hook                    repos_path
-    SVN::Simple::Hook::PreCommit         repos_path txn_name
+    SVN::Simple::Hook             repos_path
+    SVN::Simple::Hook::PreCommit  repos_path author root txn_name transaction
+    SVN::Simple::Hook::PostCommit repos_path author root rev
 END_DATA
 Readonly my %ATTR_TODO => read_attr_hash(<<'END_DATA');
-    SVN::Simple::Hook::PostCommit        repos_path rev
     SVN::Simple::Hook::PostLock          repos_path user
     SVN::Simple::Hook::PostRevpropChange repos_path rev user propname action
     SVN::Simple::Hook::PostUnlock        repos_path user

@@ -7,18 +7,15 @@
 # This is free software; you can redistribute it and/or modify it under
 # the same terms as the Perl 5 programming language system itself.
 #
-use strict;          ## no critic (UselessNoCritic RequireExplicitPackage)
-use warnings;        ## no critic (UselessNoCritic RequireExplicitPackage)
-use Modern::Perl;    ## no critic (UselessNoCritic RequireExplicitPackage)
+use utf8;
+use Modern::Perl;    ## no critic (UselessNoCritic,RequireExplicitPackage)
 
 use strict;
 use warnings;
 
 use Test::More;
 
-
-
-    use File::Find;
+use File::Find;
 use File::Temp qw{ tempdir };
 
 my @modules;
@@ -29,7 +26,9 @@ find(
         $found =~ s{^lib/}{};
         $found =~ s{[/\\]}{::}g;
         $found =~ s/\.pm$//;
-        # nothing to skip push @modules, $found;
+
+        # nothing to skip
+        push @modules, $found;
     },
     'lib',
 );

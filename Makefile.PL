@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-
+BEGIN { require 5.010; }
 
 use ExtUtils::MakeMaker 6.31;
 
@@ -38,14 +38,16 @@ my %WriteMakefileArgs = (
     'Moose::Role' => '0',
     'MooseX::Getopt' => '0',
     'MooseX::Has::Sugar' => '0',
+    'MooseX::Types::Common::Numeric' => '0',
     'MooseX::Types::Moose' => '0',
     'MooseX::Types::Path::Class' => '0',
     'SVN::Core' => '0',
     'SVN::Fs' => '0',
     'SVN::Repos' => '0',
-    'namespace::autoclean' => '0'
+    'namespace::autoclean' => '0',
+    'utf8' => '0'
   },
-  'VERSION' => '0.110071',
+  'VERSION' => '0.200',
   'test' => {
     'TESTS' => 't/*.t'
   }

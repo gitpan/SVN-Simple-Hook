@@ -7,9 +7,8 @@
 # This is free software; you can redistribute it and/or modify it under
 # the same terms as the Perl 5 programming language system itself.
 #
-use strict;          ## no critic (UselessNoCritic RequireExplicitPackage)
-use warnings;        ## no critic (UselessNoCritic RequireExplicitPackage)
-use Modern::Perl;    ## no critic (UselessNoCritic RequireExplicitPackage)
+use utf8;
+use Modern::Perl;    ## no critic (UselessNoCritic,RequireExplicitPackage)
 
 BEGIN {
     unless ( $ENV{AUTHOR_TESTING} ) {
