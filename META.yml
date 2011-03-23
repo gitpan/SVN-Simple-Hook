@@ -7,7 +7,6 @@ build_requires:
   Carp: 0
   File::Find: 0
   File::Temp: 0
-  Moose: 0
   MooseX::App::Cmd: 0
   MooseX::App::Cmd::Command: 0
   Readonly: 0
@@ -29,12 +28,14 @@ recommends:
 requires:
   English: 0
   Modern::Perl: 0
+  Moose: 0
   Moose::Role: 0
   MooseX::Getopt: 0
   MooseX::Has::Sugar: 0
   MooseX::Types::Common::Numeric: 0
   MooseX::Types::Moose: 0
   MooseX::Types::Path::Class: 0
+  Path::Class: 0
   SVN::Core: 0
   SVN::Fs: 0
   SVN::Repos: 0
@@ -42,5 +43,7 @@ requires:
   perl: 5.010
   utf8: 0
 resources:
-  bugtracker: http://github.com/mjgardner/SVN-Simple-Hook/issues
-version: 0.200
+  bugtracker: https://github.com/mjgardner/svn-simple-hook/issues
+  homepage: http://search.cpan.org/dist/SVN-Simple-Hook/
+  repository: git://github.com/mjgardner/svn-simple-hook.git
+version: 0.210

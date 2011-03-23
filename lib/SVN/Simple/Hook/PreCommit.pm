@@ -12,7 +12,7 @@ use Modern::Perl;    ## no critic (UselessNoCritic,RequireExplicitPackage)
 package SVN::Simple::Hook::PreCommit;
 
 BEGIN {
-    $SVN::Simple::Hook::PreCommit::VERSION = '0.200';
+    $SVN::Simple::Hook::PreCommit::VERSION = '0.210';
 }
 
 # ABSTRACT: Role for Subversion pre-commit hooks
@@ -63,7 +63,7 @@ SVN::Simple::Hook::PreCommit - Role for Subversion pre-commit hooks
 
 =head1 VERSION
 
-version 0.200
+version 0.210
 
 =head1 SYNOPSIS
 
@@ -128,7 +128,7 @@ L<SVN::Simple::Hook|SVN::Simple::Hook> consumers.
 =head1 BUGS
 
 Please report any bugs or feature requests on the bugtracker website
-http://github.com/mjgardner/SVN-Simple-Hook/issues
+https://github.com/mjgardner/svn-simple-hook/issues
 
 When submitting a bug or request, please include a test-file or a
 patch to an existing test-file that illustrates the bug or desired

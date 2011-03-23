@@ -2,7 +2,7 @@ NAME
     SVN::Simple::Hook - Simple Moose-based framework for Subversion hooks
 
 VERSION
-    version 0.200
+    version 0.210
 
 SYNOPSIS
 DESCRIPTION
@@ -26,13 +26,18 @@ ATTRIBUTES
     Subversion root object from the repository. Role consumers must provide
     a "_build_root" method to set a default value.
 
+  paths_changed
+    A hash reference where the keys are paths in the "root" and values are
+    SVN::Simple::Path_Change objects. Enables hooks to access the changes
+    that triggered them.
+
 SEE ALSO
     See SVN::Simple::Hook::PreCommit for an example. This role exists solely
     to be composed into other roles.
 
 BUGS
     Please report any bugs or feature requests on the bugtracker website
-    http://github.com/mjgardner/SVN-Simple-Hook/issues
+    https://github.com/mjgardner/svn-simple-hook/issues
 
     When submitting a bug or request, please include a test-file or a patch
     to an existing test-file that illustrates the bug or desired feature.

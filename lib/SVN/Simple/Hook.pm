@@ -12,7 +12,7 @@ use Modern::Perl;    ## no critic (UselessNoCritic,RequireExplicitPackage)
 package SVN::Simple::Hook;
 
 BEGIN {
-    $SVN::Simple::Hook::VERSION = '0.200';
+    $SVN::Simple::Hook::VERSION = '0.210';
 }
 
 # ABSTRACT: Simple Moose-based framework for Subversion hooks
@@ -23,9 +23,11 @@ use Moose::Role;
 use MooseX::Has::Sugar;
 use MooseX::Types::Moose 'Str';
 use MooseX::Types::Path::Class 'Dir';
+use Path::Class;
 use SVN::Core;
 use SVN::Repos;
 use SVN::Fs;
+use SVN::Simple::Path_Change;
 use namespace::autoclean;
 with 'MooseX::Getopt';
 
@@ -52,6 +54,30 @@ has root => ( ro, required, lazy_build,
     init_arg => undef,
 );
 
+has paths_changed => ( ro, required, lazy_build,
+    isa      => 'HashRef[SVN::Simple::Path_Change]',
+    init_arg => undef,
+);
+
+sub _build_paths_changed {    ## no critic (ProhibitUnusedPrivateSubroutines)
+    my $self        = shift;
+    my $root        = $self->root;
+    my $changed_ref = $root->paths_changed;
+
+    my %paths_changed;
+    while ( my ( $path, $info_ref ) = each %{$changed_ref} ) {
+        my $path_obj;
+        if ( $root->is_dir($path) )  { $path_obj = dir($path) }
+        if ( $root->is_file($path) ) { $path_obj = file($path) }
+
+        $paths_changed{$path} = SVN::Simple::Path_Change->new(
+            svn_change => $info_ref,
+            path       => $path_obj,
+        );
+    }
+    return \%paths_changed;
+}
+
 1;
 
 =pod
@@ -66,7 +92,7 @@ SVN::Simple::Hook - Simple Moose-based framework for Subversion hooks
 
 =head1 VERSION
 
-version 0.200
+version 0.210
 
 =head1 SYNOPSIS
 
@@ -98,6 +124,12 @@ C<_build_author> method to set a default value.
 L<Subversion root object|SVN::Fs/_p_svn_fs_root_t> from the repository.  Role
 consumers must provide a C<_build_root> method to set a default value.
 
+=head2 paths_changed
+
+A hash reference where the keys are paths in the L</root> and values are
+L<SVN::Simple::Path_Change|SVN::Simple::Path_Change> objects.  Enables hooks
+to access the changes that triggered them.
+
 =for test_synopsis 1;
 
 =for test_synopsis __END__
@@ -110,7 +142,7 @@ an example.  This role exists solely to be composed into other roles.
 =head1 BUGS
 
 Please report any bugs or feature requests on the bugtracker website
-http://github.com/mjgardner/SVN-Simple-Hook/issues
+https://github.com/mjgardner/svn-simple-hook/issues
 
 When submitting a bug or request, please include a test-file or a
 patch to an existing test-file that illustrates the bug or desired

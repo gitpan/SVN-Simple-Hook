@@ -12,7 +12,7 @@ use Modern::Perl;    ## no critic (UselessNoCritic,RequireExplicitPackage)
 package SVN::Simple::Hook::PostCommit;
 
 BEGIN {
-    $SVN::Simple::Hook::PostCommit::VERSION = '0.200';
+    $SVN::Simple::Hook::PostCommit::VERSION = '0.210';
 }
 
 # ABSTRACT: Role for Subversion post-commit hooks
@@ -28,11 +28,11 @@ use SVN::Fs;
 use namespace::autoclean;
 with 'SVN::Simple::Hook';
 
-has rev => (
+has revision_number => (
     ro,
     traits        => ['Getopt'],
     isa           => PositiveInt,
-    cmd_aliases   => [qw(revnum rev_num revision_number)],
+    cmd_aliases   => [qw(rev revnum rev_num revision_number)],
     documentation => 'commit transaction name',
 );
 
@@ -46,13 +46,14 @@ has _svn_filesystem => (
     ## no critic (Subroutines::ProhibitUnusedPrivateSubroutines)
     sub _build_author {
         my $self = shift;
-        return $self->_svn_filesystem->revision_prop( $self->rev,
+        return $self->_svn_filesystem->revision_prop( $self->revision_number,
             'svn:author' );
     }
 
     sub _build_root {
         my $self = shift;
-        return $self->_svn_filesystem->revision_root( $self->rev );
+        return $self->_svn_filesystem->revision_root(
+            $self->revision_number );
     }
 }
 
@@ -70,7 +71,7 @@ SVN::Simple::Hook::PostCommit - Role for Subversion post-commit hooks
 
 =head1 VERSION
 
-version 0.200
+version 0.210
 
 =head1 SYNOPSIS
 
@@ -129,7 +130,7 @@ L<SVN::Simple::Hook|SVN::Simple::Hook> consumers.
 =head1 BUGS
 
 Please report any bugs or feature requests on the bugtracker website
-http://github.com/mjgardner/SVN-Simple-Hook/issues
+https://github.com/mjgardner/svn-simple-hook/issues
 
 When submitting a bug or request, please include a test-file or a
 patch to an existing test-file that illustrates the bug or desired
