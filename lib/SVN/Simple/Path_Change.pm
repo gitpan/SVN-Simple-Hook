@@ -12,7 +12,7 @@ use Modern::Perl;    ## no critic (UselessNoCritic,RequireExplicitPackage)
 package SVN::Simple::Path_Change;
 
 BEGIN {
-    $SVN::Simple::Path_Change::VERSION = '0.211';
+    $SVN::Simple::Path_Change::VERSION = '0.212';
 }
 
 # ABSTRACT: A class for easier manipulation of Subversion path changes
@@ -21,6 +21,7 @@ use English '-no_match_vars';
 use Moose;
 use MooseX::Has::Sugar;
 use MooseX::Types::Path::Class qw(Dir File);
+use SVN::Core;
 use SVN::Fs;
 use namespace::autoclean;
 
@@ -46,7 +47,7 @@ SVN::Simple::Path_Change - A class for easier manipulation of Subversion path ch
 
 =head1 VERSION
 
-version 0.211
+version 0.212
 
 =head1 SYNOPSIS
 

@@ -17,7 +17,7 @@ build_requires:
 configure_requires:
   ExtUtils::MakeMaker: 6.31
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.200004, CPAN::Meta::Converter version 2.110580'
+generated_by: 'Dist::Zilla version 4.200004, CPAN::Meta::Converter version 2.110930'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -46,4 +46,4 @@ resources:
   bugtracker: https://github.com/mjgardner/svn-simple-hook/issues
   homepage: http://search.cpan.org/dist/SVN-Simple-Hook/
   repository: git://github.com/mjgardner/svn-simple-hook.git
-version: 0.211
+version: 0.212
