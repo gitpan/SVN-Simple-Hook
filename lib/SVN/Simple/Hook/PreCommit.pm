@@ -12,7 +12,7 @@ use Modern::Perl;    ## no critic (UselessNoCritic,RequireExplicitPackage)
 package SVN::Simple::Hook::PreCommit;
 
 BEGIN {
-    $SVN::Simple::Hook::PreCommit::VERSION = '0.212';
+    $SVN::Simple::Hook::PreCommit::VERSION = '0.213';
 }
 
 # ABSTRACT: Role for Subversion pre-commit hooks
@@ -63,7 +63,7 @@ SVN::Simple::Hook::PreCommit - Role for Subversion pre-commit hooks
 
 =head1 VERSION
 
-version 0.212
+version 0.213
 
 =head1 SYNOPSIS
 
@@ -91,7 +91,7 @@ version 0.212
 This L<Moose::Role|Moose::Role> gives you access to the current Subversion
 transaction for use in a pre-commit hook.  It's designed for use with
 L<MooseX::App::Cmd::Command|MooseX::App::Cmd::Command> classes, so consult
-the main L<MooseX::App::Cmd documentation|MooseX::App::Command> for details
+the main L<MooseX::App::Cmd documentation|MooseX::App::Cmd> for details
 on how to extend it to create your scripts.
 
 =head1 ATTRIBUTES

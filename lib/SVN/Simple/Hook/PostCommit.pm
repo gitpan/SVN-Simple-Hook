@@ -12,7 +12,7 @@ use Modern::Perl;    ## no critic (UselessNoCritic,RequireExplicitPackage)
 package SVN::Simple::Hook::PostCommit;
 
 BEGIN {
-    $SVN::Simple::Hook::PostCommit::VERSION = '0.212';
+    $SVN::Simple::Hook::PostCommit::VERSION = '0.213';
 }
 
 # ABSTRACT: Role for Subversion post-commit hooks
@@ -71,7 +71,7 @@ SVN::Simple::Hook::PostCommit - Role for Subversion post-commit hooks
 
 =head1 VERSION
 
-version 0.212
+version 0.213
 
 =head1 SYNOPSIS
 
@@ -98,7 +98,7 @@ version 0.212
 This L<Moose::Role|Moose::Role> gives you access to the Subversion revision
 just committed for use in a post-commit hook.  It's designed for use with
 L<MooseX::App::Cmd::Command|MooseX::App::Cmd::Command> classes, so consult
-the main L<MooseX::App::Cmd documentation|MooseX::App::Command> for details
+the main L<MooseX::App::Cmd documentation|MooseX::App::Cmd> for details
 on how to extend it to create your scripts.
 
 =head1 ATTRIBUTES

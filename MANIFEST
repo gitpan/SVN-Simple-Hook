@@ -17,7 +17,6 @@ t/000-report-versions.t
 t/author-critic.t
 t/post_commit.t
 t/pre_commit.t
-t/release-check-changes.t
 t/release-consistent-version.t
 t/release-cpan-changes.t
 t/release-dist-manifest.t
@@ -25,9 +24,11 @@ t/release-distmeta.t
 t/release-eol.t
 t/release-has-version.t
 t/release-kwalitee.t
+t/release-meta-json.t
 t/release-minimum-version.t
 t/release-no-tabs.t
 t/release-pod-coverage.t
+t/release-pod-linkcheck.t
 t/release-pod-syntax.t
 t/release-portability.t
 t/release-synopsis.t

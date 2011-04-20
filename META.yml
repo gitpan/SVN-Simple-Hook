@@ -30,8 +30,10 @@ requires:
   Modern::Perl: 0
   Moose: 0
   Moose::Role: 0
+  MooseX::App::Cmd: 0
   MooseX::Getopt: 0
   MooseX::Has::Sugar: 0
+  MooseX::Types::Common: 0
   MooseX::Types::Common::Numeric: 0
   MooseX::Types::Moose: 0
   MooseX::Types::Path::Class: 0
@@ -46,4 +48,4 @@ resources:
   bugtracker: https://github.com/mjgardner/svn-simple-hook/issues
   homepage: http://search.cpan.org/dist/SVN-Simple-Hook/
   repository: git://github.com/mjgardner/svn-simple-hook.git
-version: 0.212
+version: 0.213

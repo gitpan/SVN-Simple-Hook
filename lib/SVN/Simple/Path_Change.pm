@@ -12,7 +12,7 @@ use Modern::Perl;    ## no critic (UselessNoCritic,RequireExplicitPackage)
 package SVN::Simple::Path_Change;
 
 BEGIN {
-    $SVN::Simple::Path_Change::VERSION = '0.212';
+    $SVN::Simple::Path_Change::VERSION = '0.213';
 }
 
 # ABSTRACT: A class for easier manipulation of Subversion path changes
@@ -47,7 +47,7 @@ SVN::Simple::Path_Change - A class for easier manipulation of Subversion path ch
 
 =head1 VERSION
 
-version 0.212
+version 0.213
 
 =head1 SYNOPSIS
 

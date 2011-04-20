@@ -36,8 +36,10 @@ my %WriteMakefileArgs = (
     'Modern::Perl' => '0',
     'Moose' => '0',
     'Moose::Role' => '0',
+    'MooseX::App::Cmd' => '0',
     'MooseX::Getopt' => '0',
     'MooseX::Has::Sugar' => '0',
+    'MooseX::Types::Common' => '0',
     'MooseX::Types::Common::Numeric' => '0',
     'MooseX::Types::Moose' => '0',
     'MooseX::Types::Path::Class' => '0',
@@ -48,7 +50,7 @@ my %WriteMakefileArgs = (
     'namespace::autoclean' => '0',
     'utf8' => '0'
   },
-  'VERSION' => '0.212',
+  'VERSION' => '0.213',
   'test' => {
     'TESTS' => 't/*.t'
   }

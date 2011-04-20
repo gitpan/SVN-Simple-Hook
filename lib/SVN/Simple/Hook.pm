@@ -12,7 +12,7 @@ use Modern::Perl;    ## no critic (UselessNoCritic,RequireExplicitPackage)
 package SVN::Simple::Hook;
 
 BEGIN {
-    $SVN::Simple::Hook::VERSION = '0.212';
+    $SVN::Simple::Hook::VERSION = '0.213';
 }
 
 # ABSTRACT: Simple Moose-based framework for Subversion hooks
@@ -99,7 +99,7 @@ SVN::Simple::Hook - Simple Moose-based framework for Subversion hooks
 
 =head1 VERSION
 
-version 0.212
+version 0.213
 
 =head1 SYNOPSIS
 

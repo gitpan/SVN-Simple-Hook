@@ -19,8 +19,7 @@ BEGIN {
 }
 
 use Test::More;
-
-eval "use Test::CheckChanges";
-plan skip_all => "Test::CheckChanges required for testing changes"
+eval 'use Test::CPAN::Meta::JSON';
+plan skip_all => 'Test::CPAN::Meta::JSON required for testing META.json'
     if $@;
-ok_changes();
+meta_json_ok();
