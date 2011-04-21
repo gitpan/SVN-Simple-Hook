@@ -36,9 +36,7 @@
             "MooseX::Types::Moose" : 0,
             "MooseX::Types::Path::Class" : 0,
             "Path::Class" : 0,
-            "SVN::Core" : 0,
-            "SVN::Fs" : 0,
-            "SVN::Repos" : 0,
+            "SVN::Client" : 0,
             "namespace::autoclean" : 0,
             "perl" : "5.010",
             "utf8" : 0
@@ -78,6 +76,6 @@
          "web" : "https://github.com/mjgardner/svn-simple-hook"
       }
    },
-   "version" : "0.213"
+   "version" : "0.214"
 }
 

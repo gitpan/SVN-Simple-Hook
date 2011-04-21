@@ -12,7 +12,7 @@ use Modern::Perl;    ## no critic (UselessNoCritic,RequireExplicitPackage)
 package SVN::Simple::Hook::PostCommit;
 
 BEGIN {
-    $SVN::Simple::Hook::PostCommit::VERSION = '0.213';
+    $SVN::Simple::Hook::PostCommit::VERSION = '0.214';
 }
 
 # ABSTRACT: Role for Subversion post-commit hooks
@@ -28,16 +28,14 @@ use SVN::Fs;
 use namespace::autoclean;
 with 'SVN::Simple::Hook';
 
-has revision_number => (
-    ro,
+has revision_number => ( ro, required,
     traits        => ['Getopt'],
     isa           => PositiveInt,
     cmd_aliases   => [qw(rev revnum rev_num revision_number)],
-    documentation => 'commit transaction name',
+    documentation => 'commit revision number',
 );
 
-has _svn_filesystem => (
-    ro, lazy,
+has _svn_filesystem => ( ro, required, lazy,
     isa     => '_p_svn_fs_t',
     default => sub { shift->repository->fs },
 );
@@ -71,7 +69,7 @@ SVN::Simple::Hook::PostCommit - Role for Subversion post-commit hooks
 
 =head1 VERSION
 
-version 0.213
+version 0.214
 
 =head1 SYNOPSIS
 

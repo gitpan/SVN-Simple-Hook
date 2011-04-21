@@ -12,7 +12,7 @@ use Modern::Perl;    ## no critic (UselessNoCritic,RequireExplicitPackage)
 package SVN::Simple::Hook::PreCommit;
 
 BEGIN {
-    $SVN::Simple::Hook::PreCommit::VERSION = '0.213';
+    $SVN::Simple::Hook::PreCommit::VERSION = '0.214';
 }
 
 # ABSTRACT: Role for Subversion pre-commit hooks
@@ -28,16 +28,14 @@ use SVN::Fs;
 use namespace::autoclean;
 with 'SVN::Simple::Hook';
 
-has txn_name => (
-    ro,
+has txn_name => ( ro, required,
     traits        => ['Getopt'],
     isa           => Str,
     cmd_aliases   => [qw(t txn tran trans transaction transaction_name)],
     documentation => 'commit transaction name',
 );
 
-has transaction => (
-    ro, required, lazy,
+has transaction => ( ro, required, lazy,
     isa      => '_p_svn_fs_txn_t',
     init_arg => undef,
     default => sub { $ARG[0]->repository->fs->open_txn( $ARG[0]->txn_name ) },
@@ -63,7 +61,7 @@ SVN::Simple::Hook::PreCommit - Role for Subversion pre-commit hooks
 
 =head1 VERSION
 
-version 0.213
+version 0.214
 
 =head1 SYNOPSIS
 
