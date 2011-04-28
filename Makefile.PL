@@ -45,10 +45,11 @@ my %WriteMakefileArgs = (
     'MooseX::Types::Path::Class' => '0',
     'Path::Class' => '0',
     'SVN::Client' => '0',
+    'SVN::Core' => '0',
     'namespace::autoclean' => '0',
     'utf8' => '0'
   },
-  'VERSION' => '0.214',
+  'VERSION' => '0.215',
   'test' => {
     'TESTS' => 't/*.t'
   }
