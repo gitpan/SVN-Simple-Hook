@@ -1,4 +1,4 @@
-#!perl
+#!/usr/bin/perl
 #
 # This file is part of SVN-Simple-Hook
 #
@@ -8,6 +8,7 @@
 # the same terms as the Perl 5 programming language system itself.
 #
 use utf8;
+use strict;
 use Modern::Perl;    ## no critic (UselessNoCritic,RequireExplicitPackage)
 
 BEGIN {
@@ -18,9 +19,14 @@ BEGIN {
     }
 }
 
+use 5.006;
+use strict;
+use warnings;
 use Test::More;
 
-eval "use Test::HasVersion";
-plan skip_all => "Test::HasVersion required for testing version numbers"
+eval "use Test::Version 0.04";
+plan skip_all => "Test::Version 0.04 required for testing versions"
     if $@;
-all_pm_version_ok();
+
+version_all_ok();
+done_testing;

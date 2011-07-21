@@ -8,6 +8,7 @@
 # the same terms as the Perl 5 programming language system itself.
 #
 use utf8;
+use strict;
 use Modern::Perl;    ## no critic (UselessNoCritic,RequireExplicitPackage)
 
 BEGIN {

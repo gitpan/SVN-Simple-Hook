@@ -7,56 +7,74 @@
 # the same terms as the Perl 5 programming language system itself.
 #
 use utf8;
+use strict;
 use Modern::Perl;    ## no critic (UselessNoCritic,RequireExplicitPackage)
 
 package SVN::Simple::Hook;
 
 BEGIN {
-    $SVN::Simple::Hook::VERSION = '0.215';
+    $SVN::Simple::Hook::VERSION = '0.300';
 }
 
 # ABSTRACT: Simple Moose-based framework for Subversion hooks
 
-use strict;
 use English '-no_match_vars';
-use Moose::Role;
-use MooseX::Has::Sugar;
-use MooseX::Types::Moose 'Str';
-use MooseX::Types::Path::Class 'Dir';
+use Any::Moose '::Role';
+use Any::Moose 'X::Types::' . any_moose() => ['Str'];
+use Any::Moose 'X::Types::Path::Class'    => ['Dir'];
 use Path::Class;
 use SVN::Core;
 use SVN::Repos;
 use SVN::Fs;
 use SVN::Simple::Path_Change;
 use namespace::autoclean;
-with 'MooseX::Getopt';
+with any_moose('X::Getopt');
 
 has repos_path => (
-    ro, required, coerce,
-    traits        => ['Getopt'],
+    is            => 'ro',
     isa           => Dir,
-    cmd_aliases   => [qw(r repo repos repository repository_dir)],
     documentation => 'repository path',
+    traits        => ['Getopt'],
+    cmd_aliases   => [qw(r repo repos repository repository_dir)],
+    required      => 1,
+    coerce        => 1,
 );
 
 has repository => (
-    ro, required, lazy,
+    is       => 'ro',
     isa      => '_p_svn_repos_t',
     init_arg => undef,
+    required => 1,
+    lazy     => 1,
     ## no critic (ProhibitCallsToUnexportedSubs)
     default => sub { SVN::Repos::open( shift->repos_path->stringify() ) },
 );
 
-has author => ( ro, required, lazy_build, isa => Str, init_arg => undef );
-
-has root => ( ro, required, lazy_build,
-    isa      => '_p_svn_fs_root_t',
+has author => (
+    is       => 'ro',
+    isa      => Str,
     init_arg => undef,
+    lazy     => 1,
+    builder  => '_build_author',
+    required => 1,
 );
 
-has paths_changed => ( ro, required, lazy_build,
+has root => (
+    is       => 'ro',
+    isa      => '_p_svn_fs_root_t',
+    init_arg => undef,
+    required => 1,
+    lazy     => 1,
+    builder  => '_build_root',
+);
+
+has paths_changed => (
+    is       => 'ro',
     isa      => 'HashRef[SVN::Simple::Path_Change]',
     init_arg => undef,
+    required => 1,
+    lazy     => 1,
+    builder  => '_build_paths_changed',
 );
 
 sub _build_paths_changed {    ## no critic (ProhibitUnusedPrivateSubroutines)
@@ -99,7 +117,7 @@ SVN::Simple::Hook - Simple Moose-based framework for Subversion hooks
 
 =head1 VERSION
 
-version 0.215
+version 0.300
 
 =head1 SYNOPSIS
 
@@ -118,7 +136,7 @@ L<Directory|Path::Class::Dir> containing the Subversion repository.
 
 =head2 repository
 
-Subversion L<repository object|SVN::Repos/_p_svn_repos_t>.  Opened on first
+Subversion L<repository object|SVN::Repos>.  Opened on first
 call to the accessor.
 
 =head2 author

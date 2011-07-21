@@ -2,9 +2,9 @@
 use strict;
 use warnings;
 
-BEGIN { require 5.010; }
+use 5.010;
 
-use ExtUtils::MakeMaker 6.31;
+use ExtUtils::MakeMaker 6.30;
 
 
 
@@ -14,42 +14,36 @@ my %WriteMakefileArgs = (
   'BUILD_REQUIRES' => {
     'App::Cmd::Tester' => '0',
     'Carp' => '0',
+    'Const::Fast' => '0',
     'File::Find' => '0',
     'File::Temp' => '0',
-    'MooseX::App::Cmd' => '0',
-    'MooseX::App::Cmd::Command' => '0',
-    'Readonly' => '0',
     'Scalar::Util' => '0',
     'Test::More' => '0.94',
     'Test::Most' => '0',
-    'perl' => '5.004'
+    'perl' => '5.006'
   },
   'CONFIGURE_REQUIRES' => {
-    'ExtUtils::MakeMaker' => '6.31'
+    'ExtUtils::MakeMaker' => '6.30'
   },
   'DISTNAME' => 'SVN-Simple-Hook',
   'EXE_FILES' => [],
   'LICENSE' => 'perl',
   'NAME' => 'SVN::Simple::Hook',
   'PREREQ_PM' => {
+    'Any::Moose' => '0',
     'English' => '0',
     'Modern::Perl' => '0',
-    'Moose' => '0',
-    'Moose::Role' => '0',
-    'MooseX::App::Cmd' => '0',
-    'MooseX::Getopt' => '0',
-    'MooseX::Has::Sugar' => '0',
-    'MooseX::Types::Common' => '0',
-    'MooseX::Types::Common::Numeric' => '0',
-    'MooseX::Types::Moose' => '0',
-    'MooseX::Types::Path::Class' => '0',
+    'MouseX::App::Cmd' => '0',
+    'MouseX::Types::Common' => '0',
+    'MouseX::Types::Mouse' => '0',
+    'MouseX::Types::Path::Class' => '0',
     'Path::Class' => '0',
     'SVN::Client' => '0',
     'SVN::Core' => '0',
     'namespace::autoclean' => '0',
     'utf8' => '0'
   },
-  'VERSION' => '0.215',
+  'VERSION' => '0.300',
   'test' => {
     'TESTS' => 't/*.t'
   }

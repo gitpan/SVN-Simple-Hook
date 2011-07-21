@@ -7,37 +7,41 @@
 # the same terms as the Perl 5 programming language system itself.
 #
 use utf8;
+use strict;
 use Modern::Perl;    ## no critic (UselessNoCritic,RequireExplicitPackage)
 
 package SVN::Simple::Hook::PostCommit;
 
 BEGIN {
-    $SVN::Simple::Hook::PostCommit::VERSION = '0.215';
+    $SVN::Simple::Hook::PostCommit::VERSION = '0.300';
 }
 
 # ABSTRACT: Role for Subversion post-commit hooks
 
-use strict;
 use English '-no_match_vars';
-use Moose::Role;
-use MooseX::Has::Sugar;
-use MooseX::Types::Common::Numeric 'PositiveInt';
+use Any::Moose '::Role';
+use Any::Moose 'X::Types::Common::Numeric' => ['PositiveInt'];
 use SVN::Core;
 use SVN::Repos;
 use SVN::Fs;
 use namespace::autoclean;
 with 'SVN::Simple::Hook';
 
-has revision_number => ( ro, required,
-    traits        => ['Getopt'],
+has revision_number => (
+    is            => 'ro',
     isa           => PositiveInt,
+    required      => 1,
+    traits        => ['Getopt'],
     cmd_aliases   => [qw(rev revnum rev_num revision_number)],
     documentation => 'commit revision number',
 );
 
-has _svn_filesystem => ( ro, required, lazy,
-    isa     => '_p_svn_fs_t',
-    default => sub { shift->repository->fs },
+has _svn_filesystem => (
+    is       => 'ro',
+    isa      => '_p_svn_fs_t',
+    required => 1,
+    lazy     => 1,
+    default  => sub { shift->repository->fs },
 );
 
 {
@@ -69,7 +73,7 @@ SVN::Simple::Hook::PostCommit - Role for Subversion post-commit hooks
 
 =head1 VERSION
 
-version 0.215
+version 0.300
 
 =head1 SYNOPSIS
 

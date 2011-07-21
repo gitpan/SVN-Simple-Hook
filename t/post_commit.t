@@ -8,16 +8,17 @@
 # the same terms as the Perl 5 programming language system itself.
 #
 use utf8;
+use strict;
 use Modern::Perl;    ## no critic (UselessNoCritic,RequireExplicitPackage)
 
 package My::Cmd;
-use Moose;
-extends 'MooseX::App::Cmd';
+use Any::Moose;
+extends any_moose('X::App::Cmd');
 
 package My::Cmd::Command::post_commit;
 use English '-no_match_vars';
-use Moose;
-extends 'MooseX::App::Cmd::Command';
+use Any::Moose;
+extends any_moose('X::App::Cmd::Command');
 with 'SVN::Simple::Hook::PostCommit';
 
 sub execute {
@@ -30,15 +31,15 @@ sub execute {
 }
 
 package main;
+use Const::Fast;
 use English '-no_match_vars';
 use File::Temp;
-use Readonly;
 use SVN::Core;
 use SVN::Repos;
 use Test::More tests => 2;
 use App::Cmd::Tester;
 
-Readonly my $USERID => scalar getpwuid $EFFECTIVE_USER_ID;
+const my $USERID => scalar getpwuid $EFFECTIVE_USER_ID;
 my $tmp_dir = File::Temp->newdir();
 my $repos   = SVN::Repos::create( "$tmp_dir", (undef) x 4 );
 my $txn     = $repos->fs_begin_txn_for_update( 0, "$USERID" );

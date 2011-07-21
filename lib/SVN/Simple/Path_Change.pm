@@ -7,32 +7,43 @@
 # the same terms as the Perl 5 programming language system itself.
 #
 use utf8;
+use strict;
 use Modern::Perl;    ## no critic (UselessNoCritic,RequireExplicitPackage)
 
 package SVN::Simple::Path_Change;
 
 BEGIN {
-    $SVN::Simple::Path_Change::VERSION = '0.215';
+    $SVN::Simple::Path_Change::VERSION = '0.300';
 }
 
 # ABSTRACT: A class for easier manipulation of Subversion path changes
 
 use English '-no_match_vars';
-use Moose;
-use MooseX::Has::Sugar;
-use MooseX::Types::Path::Class qw(Dir File);
+use Any::Moose;
+use Any::Moose 'X::Types::Path::Class' => [qw(Dir File)];
 use SVN::Core;
 use SVN::Fs;
 use namespace::autoclean;
 
-## no critic (RequireDotMatchAnything, RequireExtendedFormatting)
-## no critic (RequireLineBoundaryMatching)
-has svn_change =>
-    ( ro, required, isa => '_p_svn_fs_path_change_t', handles => qr// );
+has svn_change => (
+    is       => 'ro',
+    isa      => '_p_svn_fs_path_change_t',
+    required => 1,
+    handles  => [
+        grep { not $ARG ~~ [qw(new DESTROY)] }
+            map { $ARG->name }
+            any_moose('::Meta::Class')->initialize('_p_svn_fs_path_change_t')
+            ->get_all_methods(),
+    ],
+);
 
-has path => ( ro, required, coerce, isa => Dir | File );
+has path => (
+    is       => 'ro',
+    isa      => Dir | File,    ## no critic (Bangs::ProhibitBitwiseOperators)
+    required => 1,
+    coerce   => 1,
+);
 
-__PACKAGE__->meta->make_immutable();
 1;
 
 =pod
@@ -47,7 +58,7 @@ SVN::Simple::Path_Change - A class for easier manipulation of Subversion path ch
 
 =head1 VERSION
 
-version 0.215
+version 0.300
 
 =head1 SYNOPSIS
 
