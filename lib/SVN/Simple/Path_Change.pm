@@ -8,12 +8,12 @@
 #
 use utf8;
 use strict;
-use Modern::Perl;    ## no critic (UselessNoCritic,RequireExplicitPackage)
+use Modern::Perl;
 
 package SVN::Simple::Path_Change;
 
 BEGIN {
-    $SVN::Simple::Path_Change::VERSION = '0.300';
+    $SVN::Simple::Path_Change::VERSION = '0.301';
 }
 
 # ABSTRACT: A class for easier manipulation of Subversion path changes
@@ -48,7 +48,8 @@ has path => (
 
 =pod
 
-=for :stopwords Mark Gardner GSI Commerce
+=for :stopwords Mark Gardner GSI Commerce cpan testmatrix url annocpan anno bugtracker rt
+cpants kwalitee diff irc mailto metadata placeholders
 
 =encoding utf8
 
@@ -58,7 +59,7 @@ SVN::Simple::Path_Change - A class for easier manipulation of Subversion path ch
 
 =head1 VERSION
 
-version 0.300
+version 0.301
 
 =head1 SYNOPSIS
 
@@ -101,14 +102,94 @@ All the methods supported by
 L<_p_svn_fs_path_change_t|SVN::Fs/_p_svn_fs_path_change_t> are delegated by and
 act on the L</svn_change> attribute.
 
-=head1 BUGS
+=head1 SUPPORT
 
-Please report any bugs or feature requests on the bugtracker website
-https://github.com/mjgardner/svn-simple-hook/issues
+=head2 Perldoc
 
-When submitting a bug or request, please include a test-file or a
-patch to an existing test-file that illustrates the bug or desired
-feature.
+You can find documentation for this module with the perldoc command.
+
+  perldoc SVN::Simple::Hook
+
+=head2 Websites
+
+The following websites have more information about this module, and may be of help to you. As always,
+in addition to those websites please use your favorite search engine to discover more resources.
+
+=over 4
+
+=item *
+
+Search CPAN
+
+The default CPAN search engine, useful to view POD in HTML format.
+
+L<http://search.cpan.org/dist/SVN-Simple-Hook>
+
+=item *
+
+AnnoCPAN
+
+The AnnoCPAN is a website that allows community annonations of Perl module documentation.
+
+L<http://annocpan.org/dist/SVN-Simple-Hook>
+
+=item *
+
+CPAN Ratings
+
+The CPAN Ratings is a website that allows community ratings and reviews of Perl modules.
+
+L<http://cpanratings.perl.org/d/SVN-Simple-Hook>
+
+=item *
+
+CPANTS
+
+The CPANTS is a website that analyzes the Kwalitee ( code metrics ) of a distribution.
+
+L<http://cpants.perl.org/dist/overview/SVN-Simple-Hook>
+
+=item *
+
+CPAN Testers
+
+The CPAN Testers is a network of smokers who run automated tests on uploaded CPAN distributions.
+
+L<http://www.cpantesters.org/distro/S/SVN-Simple-Hook>
+
+=item *
+
+CPAN Testers Matrix
+
+The CPAN Testers Matrix is a website that provides a visual way to determine what Perls/platforms PASSed for a distribution.
+
+L<http://matrix.cpantesters.org/?dist=SVN-Simple-Hook>
+
+=item *
+
+CPAN Testers Dependencies
+
+The CPAN Testers Dependencies is a website that shows a chart of the test results of all dependencies for a distribution.
+
+L<http://deps.cpantesters.org/?module=SVN::Simple::Hook>
+
+=back
+
+=head2 Bugs / Feature Requests
+
+Please report any bugs or feature requests through the web
+interface at L<https://github.com/mjgardner/svn-simple-hook/issues>. You will be automatically notified of any
+progress on the request by the system.
+
+=head2 Source Code
+
+The code is open to the world, and available for you to hack on. Please feel free to browse it and play
+with it, or whatever. If you want to contribute patches, please send me a diff or prod me to pull
+from your repository :)
+
+L<https://github.com/mjgardner/svn-simple-hook>
+
+  git clone git://github.com/mjgardner/svn-simple-hook.git
 
 =head1 AUTHOR
 

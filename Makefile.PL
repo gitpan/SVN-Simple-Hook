@@ -9,7 +9,7 @@ use ExtUtils::MakeMaker 6.30;
 
 
 my %WriteMakefileArgs = (
-  'ABSTRACT' => 'Simple Moose-based framework for Subversion hooks',
+  'ABSTRACT' => 'Simple Moose/Mouse-based framework for Subversion hooks',
   'AUTHOR' => 'Mark Gardner <mjgardner@cpan.org>',
   'BUILD_REQUIRES' => {
     'App::Cmd::Tester' => '0',
@@ -43,7 +43,7 @@ my %WriteMakefileArgs = (
     'namespace::autoclean' => '0',
     'utf8' => '0'
   },
-  'VERSION' => '0.300',
+  'VERSION' => '0.301',
   'test' => {
     'TESTS' => 't/*.t'
   }

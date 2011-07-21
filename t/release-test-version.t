@@ -9,7 +9,7 @@
 #
 use utf8;
 use strict;
-use Modern::Perl;    ## no critic (UselessNoCritic,RequireExplicitPackage)
+use Modern::Perl;
 
 BEGIN {
     unless ( $ENV{RELEASE_TESTING} ) {

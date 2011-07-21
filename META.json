@@ -1,5 +1,5 @@
 {
-   "abstract" : "Simple Moose-based framework for Subversion hooks",
+   "abstract" : "Simple Moose/Mouse-based framework for Subversion hooks",
    "author" : [
       "Mark Gardner <mjgardner@cpan.org>"
    ],
@@ -58,14 +58,14 @@
       "bugtracker" : {
          "web" : "https://github.com/mjgardner/svn-simple-hook/issues"
       },
-      "homepage" : "http://search.cpan.org/dist/SVN-Simple-Hook/",
+      "homepage" : "http://metacpan.org/release/SVN-Simple-Hook",
       "repository" : {
          "type" : "git",
          "url" : "git://github.com/mjgardner/svn-simple-hook.git",
          "web" : "https://github.com/mjgardner/svn-simple-hook"
       }
    },
-   "version" : "0.300",
+   "version" : "0.301",
    "x_Dist_Zilla" : {
       "plugins" : [
          {
