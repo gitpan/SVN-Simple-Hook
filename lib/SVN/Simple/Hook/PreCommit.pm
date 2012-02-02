@@ -1,7 +1,7 @@
 #
 # This file is part of SVN-Simple-Hook
 #
-# This software is copyright (c) 2011 by GSI Commerce.
+# This software is copyright (c) 2012 by GSI Commerce.
 #
 # This is free software; you can redistribute it and/or modify it under
 # the same terms as the Perl 5 programming language system itself.
@@ -11,9 +11,8 @@ use strict;
 use Modern::Perl;
 
 package SVN::Simple::Hook::PreCommit;
-
-BEGIN {
-    $SVN::Simple::Hook::PreCommit::VERSION = '0.301';
+{
+    $SVN::Simple::Hook::PreCommit::VERSION = '0.302';
 }
 
 # ABSTRACT: Role for Subversion pre-commit hooks
@@ -56,7 +55,7 @@ has transaction => (
 =pod
 
 =for :stopwords Mark Gardner GSI Commerce cpan testmatrix url annocpan anno bugtracker rt
-cpants kwalitee diff irc mailto metadata placeholders
+cpants kwalitee diff irc mailto metadata placeholders metacpan
 
 =encoding utf8
 
@@ -66,7 +65,7 @@ SVN::Simple::Hook::PreCommit - Role for Subversion pre-commit hooks
 
 =head1 VERSION
 
-version 0.301
+version 0.302
 
 =head1 SYNOPSIS
 
@@ -158,7 +157,7 @@ L<http://search.cpan.org/dist/SVN-Simple-Hook>
 
 AnnoCPAN
 
-The AnnoCPAN is a website that allows community annonations of Perl module documentation.
+The AnnoCPAN is a website that allows community annotations of Perl module documentation.
 
 L<http://annocpan.org/dist/SVN-Simple-Hook>
 
@@ -190,7 +189,7 @@ L<http://www.cpantesters.org/distro/S/SVN-Simple-Hook>
 
 CPAN Testers Matrix
 
-The CPAN Testers Matrix is a website that provides a visual way to determine what Perls/platforms PASSed for a distribution.
+The CPAN Testers Matrix is a website that provides a visual overview of the test results for a distribution on various Perls/platforms.
 
 L<http://matrix.cpantesters.org/?dist=SVN-Simple-Hook>
 
@@ -226,7 +225,7 @@ Mark Gardner <mjgardner@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by GSI Commerce.
+This software is copyright (c) 2012 by GSI Commerce.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

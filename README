@@ -3,7 +3,7 @@ NAME
     hooks
 
 VERSION
-    version 0.301
+    version 0.302
 
 SYNOPSIS
 DESCRIPTION
@@ -56,7 +56,7 @@ SUPPORT
 
     *   AnnoCPAN
 
-        The AnnoCPAN is a website that allows community annonations of Perl
+        The AnnoCPAN is a website that allows community annotations of Perl
         module documentation.
 
         <http://annocpan.org/dist/SVN-Simple-Hook>
@@ -84,8 +84,8 @@ SUPPORT
 
     *   CPAN Testers Matrix
 
-        The CPAN Testers Matrix is a website that provides a visual way to
-        determine what Perls/platforms PASSed for a distribution.
+        The CPAN Testers Matrix is a website that provides a visual overview
+        of the test results for a distribution on various Perls/platforms.
 
         <http://matrix.cpantesters.org/?dist=SVN-Simple-Hook>
 
@@ -115,7 +115,7 @@ AUTHOR
     Mark Gardner <mjgardner@cpan.org>
 
 COPYRIGHT AND LICENSE
-    This software is copyright (c) 2011 by GSI Commerce.
+    This software is copyright (c) 2012 by GSI Commerce.
 
     This is free software; you can redistribute it and/or modify it under
     the same terms as the Perl 5 programming language system itself.

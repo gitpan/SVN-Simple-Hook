@@ -1,6 +1,6 @@
 severity = brutal
 verbose = 8
-exclude = Compatibility::PodMinimumVersion Documentation::RequirePodAtEnd Editor::RequireEmacsFileVariables Miscellanea::RequireRcsKeywords Modules::RequireExplicitInclusion Modules::RequireExplicitPackage Modules::RequirePerlVersion Tics::ProhibitLongLines
+exclude = Compatibility::PodMinimumVersion Documentation::RequirePodAtEnd Editor::RequireEmacsFileVariables Miscellanea::RequireRcsKeywords Modules::RequireExplicitInclusion Modules::RequireExplicitPackage Modules::RequirePerlVersion Tics::ProhibitLongLines CodeLayout::ProhibitHashBarewords
 
 [Lax::RequireExplicitPackage::ExceptForPragmata]
 allowed_pragmata = diagnostics feature perlversion strict warnings utf8 Modern::Perl
@@ -26,7 +26,7 @@ functions = :builtins
 exclude_functions = print say
 
 [Subroutines::ProhibitCallsToUndeclaredSubs]
-exempt_subs = Any::Moose::any_moose Any::Moose::has Any::Moose::with Any::Moose::Dir Any::Moose::File Any::Moose::PositiveInt Any::Moose::Str Path::Class::dir Path::Class::file
+exempt_subs = Any::Moose::any_moose Any::Moose::has Any::Moose::with Any::Moose::Dir Any::Moose::File Any::Moose::Maybe Any::Moose::PositiveInt Any::Moose::Str Path::Class::dir Path::Class::file
 
 [TestingAndDebugging::RequireUseStrict]
 equivalent_modules = Modern::Perl
