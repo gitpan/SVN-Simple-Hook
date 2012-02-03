@@ -33,6 +33,7 @@ my %WriteMakefileArgs = (
   "PREREQ_PM" => {
     "Any::Moose" => 0,
     "English" => 0,
+    "List::MoreUtils" => 0,
     "Modern::Perl" => 0,
     "MouseX::App::Cmd" => 0,
     "MouseX::Types::Common" => 0,
@@ -41,11 +42,12 @@ my %WriteMakefileArgs = (
     "Path::Class" => 0,
     "SVN::Client" => 0,
     "SVN::Core" => 0,
+    "TryCatch" => 0,
     "namespace::autoclean" => 0,
     "strict" => 0,
     "utf8" => 0
   },
-  "VERSION" => "0.303",
+  "VERSION" => "0.304",
   "test" => {
     "TESTS" => "t/*.t t/regression/*.t"
   }

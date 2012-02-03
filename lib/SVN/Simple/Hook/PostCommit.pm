@@ -12,7 +12,7 @@ use Modern::Perl;
 
 package SVN::Simple::Hook::PostCommit;
 {
-    $SVN::Simple::Hook::PostCommit::VERSION = '0.303';
+    $SVN::Simple::Hook::PostCommit::VERSION = '0.304';
 }
 
 # ABSTRACT: Role for Subversion post-commit hooks
@@ -73,7 +73,7 @@ SVN::Simple::Hook::PostCommit - Role for Subversion post-commit hooks
 
 =head1 VERSION
 
-version 0.303
+version 0.304
 
 =head1 SYNOPSIS
 

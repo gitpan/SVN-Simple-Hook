@@ -28,6 +28,7 @@ recommends:
 requires:
   Any::Moose: 0
   English: 0
+  List::MoreUtils: 0
   Modern::Perl: 0
   MouseX::App::Cmd: 0
   MouseX::Types::Common: 0
@@ -36,6 +37,7 @@ requires:
   Path::Class: 0
   SVN::Client: 0
   SVN::Core: 0
+  TryCatch: 0
   namespace::autoclean: 0
   perl: 5.010
   strict: 0
@@ -44,7 +46,7 @@ resources:
   bugtracker: https://github.com/mjgardner/svn-simple-hook/issues
   homepage: http://metacpan.org/release/SVN-Simple-Hook/
   repository: git://github.com/mjgardner/svn-simple-hook.git
-version: 0.303
+version: 0.304
 x_Dist_Zilla:
   plugins:
     -
