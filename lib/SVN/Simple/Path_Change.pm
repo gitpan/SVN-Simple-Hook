@@ -12,15 +12,17 @@ use Modern::Perl;
 
 package SVN::Simple::Path_Change;
 {
-    $SVN::Simple::Path_Change::VERSION = '0.302';
+    $SVN::Simple::Path_Change::VERSION = '0.303';
 }
 
 # ABSTRACT: A class for easier manipulation of Subversion path changes
 
 use English '-no_match_vars';
 use Any::Moose;
-use Any::Moose 'X::Types::' . any_moose() => ['Maybe'];
+use Any::Moose '::Util::TypeConstraints';
+use Any::Moose 'X::Types::' . any_moose() => ['Undef'];
 use Any::Moose 'X::Types::Path::Class'    => [qw(Dir File)];
+use Path::Class;
 use SVN::Core;
 use SVN::Fs;
 use namespace::autoclean;
@@ -37,10 +39,12 @@ has svn_change => (
     ],
 );
 
+coerce Dir,  from Undef => via { dir(q{}) };
+coerce File, from Undef => via { file($ARG) };
+
 has path => (
-    is => 'ro',
-    ## no critic (Bangs::ProhibitBitwiseOperators)
-    isa => Maybe [ Dir | File ],
+    is       => 'ro',
+    isa      => Dir | File,    ## no critic (Bangs::ProhibitBitwiseOperators)
     required => 1,
     coerce   => 1,
 );
@@ -60,7 +64,7 @@ SVN::Simple::Path_Change - A class for easier manipulation of Subversion path ch
 
 =head1 VERSION
 
-version 0.302
+version 0.303
 
 =head1 SYNOPSIS
 

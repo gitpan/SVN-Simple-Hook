@@ -19,6 +19,7 @@ t/author-critic.t
 t/author-test-eol.t
 t/post_commit.t
 t/pre_commit.t
+t/regression/post_delete.t
 t/release-cpan-changes.t
 t/release-dist-manifest.t
 t/release-distmeta.t

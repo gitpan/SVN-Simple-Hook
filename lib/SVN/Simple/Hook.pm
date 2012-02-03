@@ -12,7 +12,7 @@ use Modern::Perl;
 
 package SVN::Simple::Hook;
 {
-    $SVN::Simple::Hook::VERSION = '0.302';
+    $SVN::Simple::Hook::VERSION = '0.303';
 }
 
 # ABSTRACT: Simple Moose/Mouse-based framework for Subversion hooks
@@ -117,7 +117,7 @@ SVN::Simple::Hook - Simple Moose/Mouse-based framework for Subversion hooks
 
 =head1 VERSION
 
-version 0.302
+version 0.303
 
 =head1 SYNOPSIS
 

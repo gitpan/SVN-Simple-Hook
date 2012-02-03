@@ -45,9 +45,9 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "utf8" => 0
   },
-  "VERSION" => "0.302",
+  "VERSION" => "0.303",
   "test" => {
-    "TESTS" => "t/*.t"
+    "TESTS" => "t/*.t t/regression/*.t"
   }
 );
 

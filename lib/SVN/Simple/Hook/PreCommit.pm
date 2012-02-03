@@ -12,7 +12,7 @@ use Modern::Perl;
 
 package SVN::Simple::Hook::PreCommit;
 {
-    $SVN::Simple::Hook::PreCommit::VERSION = '0.302';
+    $SVN::Simple::Hook::PreCommit::VERSION = '0.303';
 }
 
 # ABSTRACT: Role for Subversion pre-commit hooks
@@ -65,7 +65,7 @@ SVN::Simple::Hook::PreCommit - Role for Subversion pre-commit hooks
 
 =head1 VERSION
 
-version 0.302
+version 0.303
 
 =head1 SYNOPSIS
 
