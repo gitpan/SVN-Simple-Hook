@@ -1,23 +1,10 @@
-#
-# This file is part of SVN-Simple-Hook
-#
-# This software is copyright (c) 2012 by GSI Commerce.
-#
-# This is free software; you can redistribute it and/or modify it under
-# the same terms as the Perl 5 programming language system itself.
-#
 use utf8;
-use strict;
 use Modern::Perl;
 
 package SVN::Simple::Path_Change;
-{
-    $SVN::Simple::Path_Change::VERSION = '0.304';
-}
+use strict;
 
-# ABSTRACT: A class for easier manipulation of Subversion path changes
-
-use English '-no_match_vars';
+our $VERSION = '0.305';    # VERSION
 use Any::Moose;
 use Any::Moose '::Util::TypeConstraints';
 use Any::Moose 'X::Types::' . any_moose() => ['Undef'];
@@ -32,15 +19,15 @@ has svn_change => (
     isa      => '_p_svn_fs_path_change_t',
     required => 1,
     handles  => [
-        grep { not $ARG ~~ [qw(new DESTROY)] }
-            map { $ARG->name }
+        grep { not $_ ~~ [qw(new DESTROY)] }
+            map { $_->name }
             any_moose('::Meta::Class')->initialize('_p_svn_fs_path_change_t')
             ->get_all_methods(),
     ],
 );
 
 coerce Dir,  from Undef => via { dir(q{}) };
-coerce File, from Undef => via { file($ARG) };
+coerce File, from Undef => via { file($_) };
 
 has path => (
     is       => 'ro',
@@ -50,6 +37,10 @@ has path => (
 );
 
 1;
+
+# ABSTRACT: A class for easier manipulation of Subversion path changes
+
+__END__
 
 =pod
 
@@ -64,7 +55,7 @@ SVN::Simple::Path_Change - A class for easier manipulation of Subversion path ch
 
 =head1 VERSION
 
-version 0.304
+version 0.305
 
 =head1 SYNOPSIS
 
@@ -208,5 +199,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-__END__

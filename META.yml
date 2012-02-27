@@ -6,6 +6,7 @@ build_requires:
   App::Cmd::Tester: 0
   Carp: 0
   Const::Fast: 0
+  English: 0
   File::Find: 0
   File::Temp: 0
   Scalar::Util: 0
@@ -17,17 +18,15 @@ build_requires:
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.300007, CPAN::Meta::Converter version 2.113640'
+generated_by: 'Dist::Zilla version 4.300009, CPAN::Meta::Converter version 2.120530'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
 name: SVN-Simple-Hook
-recommends:
-  Alien::SVN: 0
 requires:
+  Alien::SVN: 1.6.12
   Any::Moose: 0
-  English: 0
   List::MoreUtils: 0
   Modern::Perl: 0
   MouseX::App::Cmd: 0
@@ -35,9 +34,10 @@ requires:
   MouseX::Types::Mouse: 0
   MouseX::Types::Path::Class: 0
   Path::Class: 0
-  SVN::Client: 0
   SVN::Core: 0
-  TryCatch: 0
+  SVN::Fs: 0
+  SVN::Repos: 0
+  Try::Tiny: 0
   namespace::autoclean: 0
   perl: 5.010
   strict: 0
@@ -46,69 +46,65 @@ resources:
   bugtracker: https://github.com/mjgardner/svn-simple-hook/issues
   homepage: http://metacpan.org/release/SVN-Simple-Hook/
   repository: git://github.com/mjgardner/svn-simple-hook.git
-version: 0.304
+version: 0.305
 x_Dist_Zilla:
   plugins:
     -
       class: Dist::Zilla::Plugin::GatherDir
       name: '@Filter/GatherDir'
-      version: 4.300007
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::PruneCruft
       name: '@Filter/PruneCruft'
-      version: 4.300007
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::ManifestSkip
       name: '@Filter/ManifestSkip'
-      version: 4.300007
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::MetaYAML
       name: '@Filter/MetaYAML'
-      version: 4.300007
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::License
       name: '@Filter/License'
-      version: 4.300007
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::ExtraTests
       name: '@Filter/ExtraTests'
-      version: 4.300007
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::ExecDir
       name: '@Filter/ExecDir'
-      version: 4.300007
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::ShareDir
       name: '@Filter/ShareDir'
-      version: 4.300007
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::MakeMaker
       name: '@Filter/MakeMaker'
-      version: 4.300007
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::Manifest
       name: '@Filter/Manifest'
-      version: 4.300007
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::TestRelease
       name: '@Filter/TestRelease'
-      version: 4.300007
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::ConfirmRelease
       name: '@Filter/ConfirmRelease'
-      version: 4.300007
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::UploadToCPAN
       name: '@Filter/UploadToCPAN'
-      version: 4.300007
-    -
-      class: Dist::Zilla::Plugin::Prepender
-      name: Prepender
-      version: 1.112280
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::AutoPrereqs
       name: AutoPrereqs
-      version: 4.300007
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::Prereqs
       config:
@@ -116,23 +112,15 @@ x_Dist_Zilla:
           phase: runtime
           type: requires
       name: Prereqs
-      version: 4.300007
-    -
-      class: Dist::Zilla::Plugin::Prereqs
-      config:
-        Dist::Zilla::Plugin::Prereqs:
-          phase: runtime
-          type: recommends
-      name: Recommends
-      version: 4.300007
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::NextRelease
       name: NextRelease
-      version: 4.300007
+      version: 4.300009
     -
-      class: Dist::Zilla::Plugin::PkgVersion
-      name: PkgVersion
-      version: 4.300007
+      class: Dist::Zilla::Plugin::OurPkgVersion
+      name: OurPkgVersion
+      version: 0.003002
     -
       class: Dist::Zilla::Plugin::PodWeaver
       name: PodWeaver
@@ -140,7 +128,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::MetaConfig
       name: MetaConfig
-      version: 4.300007
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::Test::UnusedVars
       name: '@TestingMania/Test::UnusedVars'
@@ -160,7 +148,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::PodCoverageTests
       name: '@TestingMania/PodCoverageTests'
-      version: 4.300007
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::Test::Perl::Critic
       name: '@TestingMania/Test::Perl::Critic'
@@ -180,7 +168,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::MetaTests
       name: '@TestingMania/MetaTests'
-      version: 4.300007
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::Test::Compile
       name: '@TestingMania/Test::Compile'
@@ -208,7 +196,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::PodSyntaxTests
       name: '@TestingMania/PodSyntaxTests'
-      version: 4.300007
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::MojibakeTests
       name: '@TestingMania/MojibakeTests'
@@ -236,31 +224,31 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::MetaJSON
       name: MetaJSON
-      version: 4.300007
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::Git::Check
       name: '@Git/Check'
-      version: 1.113560
+      version: 1.120370
     -
       class: Dist::Zilla::Plugin::Git::Commit
       name: '@Git/Commit'
-      version: 1.113560
+      version: 1.120370
     -
       class: Dist::Zilla::Plugin::Git::Tag
       name: '@Git/Tag'
-      version: 1.113560
+      version: 1.120370
     -
       class: Dist::Zilla::Plugin::Git::Push
       name: '@Git/Push'
-      version: 1.113560
+      version: 1.120370
     -
       class: Dist::Zilla::Plugin::Git::CommitBuild
       name: Git::CommitBuild
-      version: 1.113560
+      version: 1.120370
     -
       class: Dist::Zilla::Plugin::Git::NextVersion
       name: Git::NextVersion
-      version: 1.113560
+      version: 1.120370
     -
       class: Dist::Zilla::Plugin::GitHub::Meta
       name: '@GitHub/GitHub::Meta'
@@ -276,29 +264,29 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':InstallModules'
-      version: 4.300007
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':IncModules'
-      version: 4.300007
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':TestFiles'
-      version: 4.300007
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':ExecFiles'
-      version: 4.300007
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':ShareFiles'
-      version: 4.300007
+      version: 4.300009
     -
       class: Dist::Zilla::Plugin::FinderCode
       name: ':MainModule'
-      version: 4.300007
+      version: 4.300009
   zilla:
     class: Dist::Zilla::Dist::Builder
     config:
       is_trial: 0
-    version: 4.300007
+    version: 4.300009

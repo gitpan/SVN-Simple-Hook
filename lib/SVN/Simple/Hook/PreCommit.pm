@@ -1,23 +1,10 @@
-#
-# This file is part of SVN-Simple-Hook
-#
-# This software is copyright (c) 2012 by GSI Commerce.
-#
-# This is free software; you can redistribute it and/or modify it under
-# the same terms as the Perl 5 programming language system itself.
-#
 use utf8;
-use strict;
 use Modern::Perl;
 
 package SVN::Simple::Hook::PreCommit;
-{
-    $SVN::Simple::Hook::PreCommit::VERSION = '0.304';
-}
+use strict;
 
-# ABSTRACT: Role for Subversion pre-commit hooks
-
-use English '-no_match_vars';
+our $VERSION = '0.305';    # VERSION
 use Any::Moose '::Role';
 use Any::Moose 'X::Types::' . any_moose() => ['Str'];
 use SVN::Core;
@@ -41,7 +28,7 @@ has transaction => (
     required => 1,
     lazy     => 1,
     init_arg => undef,
-    default => sub { $ARG[0]->repository->fs->open_txn( $ARG[0]->txn_name ) },
+    default  => sub { $_[0]->repository->fs->open_txn( $_[0]->txn_name ) },
 );
 
 {
@@ -51,6 +38,10 @@ has transaction => (
 }
 
 1;
+
+# ABSTRACT: Role for Subversion pre-commit hooks
+
+__END__
 
 =pod
 
@@ -65,7 +56,7 @@ SVN::Simple::Hook::PreCommit - Role for Subversion pre-commit hooks
 
 =head1 VERSION
 
-version 0.304
+version 0.305
 
 =head1 SYNOPSIS
 
@@ -231,5 +222,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-__END__

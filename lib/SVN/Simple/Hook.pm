@@ -1,29 +1,16 @@
-#
-# This file is part of SVN-Simple-Hook
-#
-# This software is copyright (c) 2012 by GSI Commerce.
-#
-# This is free software; you can redistribute it and/or modify it under
-# the same terms as the Perl 5 programming language system itself.
-#
 use utf8;
-use strict;
 use Modern::Perl;
 
 package SVN::Simple::Hook;
-{
-    $SVN::Simple::Hook::VERSION = '0.304';
-}
+use strict;
 
-# ABSTRACT: Simple Moose/Mouse-based framework for Subversion hooks
-
-use English '-no_match_vars';
+our $VERSION = '0.305';    # VERSION
 use Any::Moose '::Role';
 use Any::Moose 'X::Types::' . any_moose() => ['Str'];
 use Any::Moose 'X::Types::Path::Class'    => ['Dir'];
 use List::MoreUtils 'any';
 use Path::Class;
-use TryCatch;
+use Try::Tiny;
 use SVN::Core;
 use SVN::Repos;
 use SVN::Fs;
@@ -105,10 +92,10 @@ sub _build_paths_changed {    ## no critic (ProhibitUnusedPrivateSubroutines)
         my $path_obj;
         my $hist_root = $fs->begin_txn( $last_rev{$path} )->root;
 
-        if ( any { $ARG->is_dir($path) } ( $root, $rev_root, $hist_root ) ) {
+        if ( any { $_->is_dir($path) } ( $root, $rev_root, $hist_root ) ) {
             $path_obj = dir($path);
         }
-        if ( any { $ARG->is_file($path) } ( $root, $rev_root, $hist_root ) ) {
+        if ( any { $_->is_file($path) } ( $root, $rev_root, $hist_root ) ) {
             $path_obj = file($path);
         }
 
@@ -121,6 +108,10 @@ sub _build_paths_changed {    ## no critic (ProhibitUnusedPrivateSubroutines)
 }
 
 1;
+
+# ABSTRACT: Simple Moose/Mouse-based framework for Subversion hooks
+
+__END__
 
 =pod
 
@@ -135,7 +126,7 @@ SVN::Simple::Hook - Simple Moose/Mouse-based framework for Subversion hooks
 
 =head1 VERSION
 
-version 0.304
+version 0.305
 
 =head1 SYNOPSIS
 
@@ -284,5 +275,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-__END__

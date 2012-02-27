@@ -1,3 +1,9 @@
+Revision history for SVN-Simple-Hook
+
+0.305     2012-02-27 11:18:40 America/New_York
+    Require Alien::SVN as a prerequisite
+    Code cleanup to simplify debugging and non-Dist::Zilla patchers
+    No functional changes
 0.304     2012-02-03 17:04:49 America/New_York
     Fall back to most recently logged type of path if it's missing from
     transaction and revision root

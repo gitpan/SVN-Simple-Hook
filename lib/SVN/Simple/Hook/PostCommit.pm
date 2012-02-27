@@ -1,23 +1,10 @@
-#
-# This file is part of SVN-Simple-Hook
-#
-# This software is copyright (c) 2012 by GSI Commerce.
-#
-# This is free software; you can redistribute it and/or modify it under
-# the same terms as the Perl 5 programming language system itself.
-#
 use utf8;
-use strict;
 use Modern::Perl;
 
 package SVN::Simple::Hook::PostCommit;
-{
-    $SVN::Simple::Hook::PostCommit::VERSION = '0.304';
-}
+use strict;
 
-# ABSTRACT: Role for Subversion post-commit hooks
-
-use English '-no_match_vars';
+our $VERSION = '0.305';    # VERSION
 use Any::Moose '::Role';
 use Any::Moose 'X::Types::Common::Numeric' => ['PositiveInt'];
 use SVN::Core;
@@ -60,6 +47,10 @@ has _svn_filesystem => (
 
 1;
 
+# ABSTRACT: Role for Subversion post-commit hooks
+
+__END__
+
 =pod
 
 =for :stopwords Mark Gardner GSI Commerce cpan testmatrix url annocpan anno bugtracker rt
@@ -73,7 +64,7 @@ SVN::Simple::Hook::PostCommit - Role for Subversion post-commit hooks
 
 =head1 VERSION
 
-version 0.304
+version 0.305
 
 =head1 SYNOPSIS
 
@@ -233,5 +224,3 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-__END__
